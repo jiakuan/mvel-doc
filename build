@@ -1,0 +1,1 @@
+pandoc -s -S --toc -c style.css MVEL_Language_Guide.md -o MVEL_Language_Guide.html
