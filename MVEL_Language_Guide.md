@@ -859,7 +859,7 @@ If you are familiar with FreeMarker, this type of syntax will not be completely 
 ### A Simple Template
 
 ```
-Hello, @{person.getSex() == &#39;F&#39; ? &#39;Ms.&#39; : &#39;Mr.&#39;} @{person.name}
+Hello, @{person.getSex() == 'F' ? 'Ms.' : 'Mr.'} @{person.name}
 
 This e-mail is to thank you for your interest in MVEL Templates 2.0.
 ```
@@ -882,7 +882,7 @@ Since the compiler requires a combination of @ and { to trigger the orb recognit
 Email any questions to: foo@bar.com
 
 @{date}
-@include{&#39;disclaimer.html&#39;}
+@include{'disclaimer.html'}
 ```
 
 But in the case where you need an @ symbol up-against an orb-tag, you will need to escape it by repeating it twice:
@@ -894,7 +894,7 @@ But in the case where you need an @ symbol up-against an orb-tag, you will need 
 That's two @'s to escape one symbol, and the third @ being the beginning of the tag. If this looks too messy, you can always use the alternate approach of using an expression tag, like this:
 
 ```
-@{username}@{&#39;@&#39;}@{domain}
+@{username}@{'@'}@{domain}
 ```
 
 ## MVEL 2.0 Orb Tags
@@ -914,7 +914,7 @@ Hello, my name is @{person.name}
 The silent code tag allows you to execute MVEL expression code in your template.  It does not return a value and does not affect the formatting of the template in any way.
 
 ```
-@code{age = 23; name = &#39;John Doe&#39;}
+@code{age = 23; name = 'John Doe'}
 @{name} is @{age} years old.
 ```
 
@@ -963,7 +963,7 @@ You can iterate more than one collection in a single foreach loop at one time by
 You can automatically add a text delimiter to an iteration by specifying the iterator in **@end{}** tag.
 
 ```
-@foreach{item : people}@{item.name}@end{&#39;, &#39;}
+@foreach{item : people}@{item.name}@end{', '}
 ```
 
 This would return something like: _John, Mary, Joseph_.
@@ -973,7 +973,7 @@ This would return something like: _John, Mary, Joseph_.
 You may include a template file into an MVEL template using this tag.
 
 ```
-@include{&#39;header.mv&#39;}
+@include{'header.mv'}
 
 This is a test template.
 ```
@@ -981,7 +981,7 @@ This is a test template.
 You may also execute an MVEL expression inside an include tag by adding a semicolon after the template name:
 
 ```
-@include{&#39;header.mv&#39;; title=&#39;Foo Title&#39;}
+@include{'header.mv'; title='Foo Title'}
 ```
 
 ### **@includeNamed{}** _Include a Named Template_
@@ -989,8 +989,8 @@ You may also execute an MVEL expression inside an include tag by adding a semico
 Named templates are templates that have been precompiled and passed to the runtime via a TemplateRegistry, or templates that have been declared within the template itself.  You simply include:
 
 ```
-@includeNamed{&#39;fooTemplate&#39;}
-@includeNamed{&#39;footerTemplate&#39;, showSomething=true}
+@includeNamed{'fooTemplate'}
+@includeNamed{'footerTemplate', showSomething=true}
 ```
 
 You may also execute MVEL code in an @includeNamed{} tag, just as with the @include{} tag.
@@ -1000,12 +1000,12 @@ You may also execute MVEL code in an @includeNamed{} tag, just as with the @incl
 In addition to including external templates from external files, and passing them in programmatically, you can declare a template from within a template.  Which allows you to do things like this:
 
 ```
-@declare{&#39;personTemplate&#39;}
+@declare{'personTemplate'}
  Name: @{name}
  Age:  @{age}
 @end{}
 
-@includeNamed{&#39;personTemplate&#39;; name=&#39;John Doe&#39;; age=22}
+@includeNamed{'personTemplate'; name='John Doe'; age=22}
 ```
 
 ### **@comment{}** _Comment tag_
