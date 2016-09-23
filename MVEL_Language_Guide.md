@@ -1032,9 +1032,9 @@ In general, the template engine follows all the same rules for context and varia
 Here's a simple example of parsing a template interpretively:
 
 ```
-String template = &quot;Hello, my name is @{name.toUpperCase()}&quot;);
+String template = "Hello, my name is @{name.toUpperCase()}");
 Map vars = new HashMap();
-vars.put(&quot;name&quot;, &quot;Michael&quot;);
+vars.put("name", "Michael");
 
 String output = (String) TemplateRuntime.eval(template, vars);
 ```
@@ -1052,7 +1052,7 @@ The **`TemplateCompiler`** class allows for pre-compilation of the templates.
 When you compile a template, a compact, reusable evaluation tree is produced that can be quickly used to evaluate a template.  It is used straightforwardly:
 
 ```
-String template = &quot;1 + 1 = @{1+1}&quot;;
+String template = "1 + 1 = @{1+1}";
 
 // compile the template
 CompiledTemplate compiled = TemplateCompiler.compileTemplate(template);
